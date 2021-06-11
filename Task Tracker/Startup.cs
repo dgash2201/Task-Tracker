@@ -12,16 +12,15 @@ namespace Task_Tracker
 {
     public class Startup
     {
+        private readonly IConfiguration _configuration;
+
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            _configuration = configuration;
         }
-
-        public IConfiguration Configuration { get; }
 
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllers();
 
             services.AddLogicServices();
@@ -30,7 +29,7 @@ namespace Task_Tracker
 
             services.AddDbContext<TaskTrackerDbContext>(options =>
             {
-                options.UseNpgsql("Host=localhost;Port=5432;Database=task_tracker;Username=postgres;Password=123");
+                options.UseNpgsql(_configuration.GetConnectionString("DefaultConnection"));
             });
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
