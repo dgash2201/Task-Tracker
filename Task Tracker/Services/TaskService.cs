@@ -35,7 +35,7 @@ namespace Task_Tracker.Services
             return await _repository.Add(task);
         }
 
-        public async Task<int> Update(TaskRequestModel taskModel, int id)
+        public async Task Update(TaskRequestModel taskModel, int id)
         {
             var task = await _repository.Get(id);
             _mapper.Map(taskModel, task);

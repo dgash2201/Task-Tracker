@@ -10,7 +10,7 @@ namespace Task_Tracker.Services
         Task<List<ProjectTask>> GetAll();
         Task<ProjectTask> Get(int id);
         Task<int> Create(TaskRequestModel projectModel);
-        Task<int> Update(TaskRequestModel projectModel, int id);
+        Task Update(TaskRequestModel projectModel, int id);
         Task Delete(int id);
     }
 }

@@ -22,7 +22,7 @@ namespace Task_Tracker.Controllers
         /// Getting a task by id
         /// </summary>
         /// <param name="id">Task id</param>
-        /// <returns>Task model</returns>
+        /// <returns>Success response with task model or bad request response</returns>
         [HttpGet]
         public async Task<IActionResult> Get(int id)
         {
@@ -34,7 +34,7 @@ namespace Task_Tracker.Controllers
         /// Task creating
         /// </summary>
         /// <param name="taskModel">Model with task data</param>
-        /// <returns>Created task id</returns>
+        /// <returns>Success response with created task id or bad request response</returns>
         [HttpPost]
         public async Task<IActionResult> Create(TaskRequestModel taskModel)
         {
@@ -54,14 +54,14 @@ namespace Task_Tracker.Controllers
         /// </summary>
         /// <param name="taskModel">Model with task data</param>
         /// /// <param name="id">Task id</param>
-        /// <returns>Task model</returns>
+        /// <returns>Success response or bad request response</returns>
         [HttpPut]
         public async Task<IActionResult> Update(TaskRequestModel taskModel, int id)
         {
             try
             {
-                var taskId = await _service.Update(taskModel, id);
-                return Ok(new { Success = true, TaskId = taskId });
+                await _service.Update(taskModel, id);
+                return Ok(new { Success = true });
             }
             catch(Exception ex)
             {
@@ -69,6 +69,12 @@ namespace Task_Tracker.Controllers
             }
         }
 
+        /// <summary>
+        /// Updating task data
+        /// </summary>
+        /// <param name="taskModel">Model with task data</param>
+        /// /// <param name="id">Task id</param>
+        /// <returns>Success response or bad request response</returns>
         [HttpDelete]
         public async Task<IActionResult> Delete(int id)
         {

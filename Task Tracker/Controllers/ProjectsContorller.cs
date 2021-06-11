@@ -18,6 +18,11 @@ namespace Task_Tracker.Controllers
             _service = service;
         }
 
+        /// <summary>
+        /// Getting a task by id
+        /// </summary>
+        /// <param name="id">Task id</param>
+        /// <returns>Success response with task model or bad request response</returns>
         [HttpGet]
         public async Task<IActionResult> Get(int id)
         {
@@ -49,7 +54,7 @@ namespace Task_Tracker.Controllers
             }
             catch(Exception ex)
             {
-                return BadRequest(new { Success = false, Message = ex.Message })
+                return BadRequest(new { Success = false, Message = ex.Message });
             }
         }
 
