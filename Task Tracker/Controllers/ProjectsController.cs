@@ -19,10 +19,10 @@ namespace Task_Tracker.Controllers
         }
 
         /// <summary>
-        /// Getting a task by id
+        /// Getting a project by id
         /// </summary>
-        /// <param name="id">Task id</param>
-        /// <returns>Success response with task model or bad request response</returns>
+        /// <param name="id">Project id</param>
+        /// <returns>Success response with project model or bad request response</returns>
         [HttpGet]
         public async Task<IActionResult> Get(int id)
         {
@@ -30,6 +30,11 @@ namespace Task_Tracker.Controllers
             return Ok(project);
         }
 
+        /// <summary>
+        /// Project creating
+        /// </summary>
+        /// <param name="projectModel">Model with project data</param>
+        /// <returns>Success response with created task id or bad request response</returns>
         [HttpPost]
         public async Task<IActionResult> Create(ProjectRequestModel projectModel)
         {
@@ -44,6 +49,12 @@ namespace Task_Tracker.Controllers
             }
         }
 
+        /// <summary>
+        /// Updating project data
+        /// </summary>
+        /// <param name="projectModelModel">Model with project data</param>
+        /// /// <param name="id">Project id</param>
+        /// <returns>Success response or bad request response</returns>
         [HttpPut]
         public async Task<IActionResult> Update(ProjectRequestModel projectModel, int id)
         {
@@ -58,6 +69,11 @@ namespace Task_Tracker.Controllers
             }
         }
 
+        /// <summary>
+        /// Deleting project
+        /// </summary>
+        /// /// <param name="id">Project id</param>
+        /// <returns>Success response or bad request response</returns>
         [HttpDelete]
         public async Task<IActionResult> Delete(int id)
         {

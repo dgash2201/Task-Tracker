@@ -70,9 +70,8 @@ namespace Task_Tracker.Controllers
         }
 
         /// <summary>
-        /// Updating task data
+        /// Deleting task
         /// </summary>
-        /// <param name="taskModel">Model with task data</param>
         /// /// <param name="id">Task id</param>
         /// <returns>Success response or bad request response</returns>
         [HttpDelete]
